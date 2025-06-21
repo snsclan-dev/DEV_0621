@@ -121,12 +121,10 @@ app.get('/logout', async (req, res)=> {
     res.clearCookie(process.env.APP_NAME);
     res.json({code: 0});
 });
-// PZZDB -----
-app.get('/sitemap', async (req, res)=>{ // sitemap.xml
-    const $SQL_SITEMAP = `SELECT num, menu, category FROM event ORDER BY created DESC;`;
-    const $SITEMAP = await pool($SQL_SITEMAP, [null], req.originalUrl)
-    if($SITEMAP.code) return res.json({code: 2, msg: `사이트 맵 오류\ntime : ${dateFormat()}\ncode : POOL`})
-    res.json({code: 0, list: $SITEMAP})
-})
-// ===== PZZDB
+// app.get('/sitemap', async (req, res)=>{ // sitemap.xml
+//     const $SQL_SITEMAP = `SELECT num, menu, category FROM event ORDER BY created DESC;`;
+//     const $SITEMAP = await pool($SQL_SITEMAP, [null], req.originalUrl)
+//     if($SITEMAP.code) return res.json({code: 2, msg: `사이트 맵 오류\ntime : ${dateFormat()}\ncode : POOL`})
+//     res.json({code: 0, list: $SITEMAP})
+// })
 module.exports = app;

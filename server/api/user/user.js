@@ -63,7 +63,6 @@ app.post('/profile/memo', async (req, res)=>{ // User_Profile > memo
         return res.json({code: 2, msg: '회원 메모 저장 오류가 발생했습니다.'})
     }
 })
-// pzzdb -------------------------------
 app.post('/info', async (req, res)=> { // User_Modify
     const { login_id } = req.user, { user_id } = req.body;
     if(!login_id || login_id !== user_id) return res.json({code:1, msg:'로그인이 필요합니다.'});
@@ -103,7 +102,6 @@ app.post('/modify/name', async (req, res)=> {
         return res.json({code: 2, msg: '별명 수정 오류가 발생했습니다.'})
     }
 })
-// ------------------------------- pzzdb
 app.post('/messenger', async (req, res)=> {
     const { login_id } = req.user, { messenger } = req.body;
     const $SQL_MESSENGER = `UPDATE user_info SET messenger=? WHERE id=?;`;

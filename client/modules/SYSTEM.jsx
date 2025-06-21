@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import 'dayjs/locale/ko';
 import { storeApp } from "modules";
 
-export const $LINK = { bot: 'https://t.me/unsg_bot', open: 'https://open.kakao.com/o/s4hW0iPf', admin: 'https://open.kakao.com/me/unsg' }
+export const $LINK = { bot: '', open: '', admin: '' }
 
 export const $FILE_UPLOAD = {
     maxSize: 10, fileSize: 10 * 1024 * 1024,

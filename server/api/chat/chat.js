@@ -66,13 +66,10 @@ app.post('/room/create', async (req, res)=>{
         const $CHECK = checkInput({ room_code: room_code })
         if($CHECK.code) return res.json($CHECK)
     }
-    // unsg -----
     const $SQL_CREATE = `INSERT INTO chat(room, title, user_id, room_type, room_max, room_code, memo) VALUES(?, ?, ?, ?, ?, ?, ?);`;
     const $CREATE = await pool($SQL_CREATE, [room, chat_title, login_id, Number(room_type), room_max, room_code || null, memo], req.originalUrl)
     if($CREATE.code) return res.json($CREATE)
     res.json({ code: 0, msg: '대화방을 만들었습니다.', room: room })
-    // ===== unsg
-    // pzzdb -----
     // try{
     //     await transaction(async (conn)=>{
     //         const $SQL_COUNT = `SELECT COUNT(*) AS count FROM chat WHERE user_id=?;`;
@@ -85,7 +82,6 @@ app.post('/room/create', async (req, res)=>{
     // }catch(err){
     //     return res.json({code: 2, msg: `대화방 등록 오류\ntime : ${dateFormat()}\ncode : TRANSACTION`})
     // }
-    // ===== pzzdb
 })
 app.post('/room/modify', async (req, res)=>{
     const { login_id, user_level } = req.user, { user_id, room_code, ...$INPUT } = req.body
